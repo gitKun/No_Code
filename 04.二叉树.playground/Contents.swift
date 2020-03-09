@@ -67,6 +67,7 @@ func levelOrder(root: TreeNode?) -> [[Int]] {
     while queue.count > 0 {
         let size = queue.count
         var level = [Int]()
+        // 内部循环去除当前层并添加下一层的所有节点
         for _ in 0..<size {
             let node = queue.removeFirst()
             level.append(node.val)

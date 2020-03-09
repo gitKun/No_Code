@@ -2,20 +2,20 @@ import UIKit
 
 // MARK: # 定义链表结构
 
-class ListNode {
-    var val: Int
+class ListNode<T> {
+    var val: T
     var next: ListNode?
-    init(_ val: Int) {
+    init(_ val: T) {
         self.val = val
         next = nil
     }
 }
 
-class List {
-    var head: ListNode?
-    var tail: ListNode?
+class List<T> {
+    var head: ListNode<T>?
+    var tail: ListNode<T>?
     // 尾插法
-    func appendToTail(_ val: Int) {
+    func appendToTail(_ val: T) {
         if  tail == nil {
             tail = ListNode(val)
             head = tail
@@ -25,7 +25,7 @@ class List {
         }
     }
     // 头插法
-    func appendToHead(_ val: Int) {
+    func appendToHead(_ val: T) {
         if head == nil {
             head = ListNode(val)
             tail = head
@@ -77,7 +77,7 @@ func getRightList(_ head: ListNode<Int>?, _ x: Int) -> ListNode<Int>? {
  */
 
 
-func partition(_ head: ListNode?, _ x: Int) -> ListNode? {
+func partition(_ head: ListNode<Int>?, _ x: Int) -> ListNode<Int>? {
     // 引用 dummy 节点
     let prevDummy = ListNode(0), postDummy = ListNode(0)
     var prev = prevDummy, post = postDummy
@@ -109,7 +109,7 @@ func partition(_ head: ListNode?, _ x: Int) -> ListNode? {
  使用2指针同事访问链表一个移动速度是另一个的两倍 如果他们变得相等了那么就成环了
  */
 
-func hasCycle(_ head: ListNode?) -> Bool {
+func hasCycle(_ head: ListNode<Int>?) -> Bool {
     var slow = head
     var fast = head
     
@@ -130,7 +130,7 @@ func hasCycle(_ head: ListNode?) -> Bool {
  * 思路:还是2个指针p和q, 指针q起始位置为指针p后的n个节点,两只镇同时移动,当q移动到尾部时,指针p所对应的元素就是要删除的元素
  */
 
-func removeNthFromEnd(head: ListNode?, _ n: Int) -> ListNode? {
+func removeNthFromEnd(head: ListNode<Int>?, _ n: Int) -> ListNode<Int>? {
     guard let head = head else {
         return nil
     }
